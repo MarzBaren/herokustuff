@@ -11,6 +11,7 @@ def checker():
 
     while True:
         proxy = get_proxy()
+        print(proxy)
 
         for _ in range(5):
             try:
@@ -98,5 +99,4 @@ if __name__ == '__main__':
     update_proxies()
 
     for _ in range(threads):
-        print(threads)
         Process(target=checker).start()
