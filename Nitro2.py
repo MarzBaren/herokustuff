@@ -71,7 +71,7 @@ def get_proxy():
         proxies_is_updating = False
         
         global timer
-        timer = time()
+
         global codes
         codes = tested
 
@@ -92,6 +92,7 @@ def update_proxies():
 
 if __name__ == '__main__':
     threads = 300
+    
     tested = 0
     working = 0
     timer = time()
