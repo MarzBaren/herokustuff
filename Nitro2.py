@@ -11,7 +11,6 @@ def checker():
 
     while True:
         proxy = get_proxy()
-        print(proxy)
 
         for _ in range(5):
             try:
@@ -20,6 +19,7 @@ def checker():
                 req = ses.get(f"https://discordapp.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true", proxies={
                     'http': "socks4://" + proxy,
                     'https': "socks4://" + proxy}, headers=header).text
+                print("1")
 
                 #print(req)
                 print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - " + str(proxy_queue.size()))
