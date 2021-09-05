@@ -58,10 +58,10 @@ def get_proxy():
 
     if proxy_queue.empty():
         proxies_is_updating = True
-        timer2 = timer - time()
+        timer2 = time() - timer
         codes2 = tested - codes
 
-        print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - Codes/S: " + str(codes2/timer2) + " - Time Since Last Update: " + str(timer2) + "s")
+        print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - Codes/S: " + str(int(codes2/timer2)) + " - Time Since Last Update: " + str(int(timer2)) + "s")
         
         if len(proxy_list) < 500:
             update_proxies()
