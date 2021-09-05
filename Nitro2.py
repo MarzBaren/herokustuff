@@ -84,7 +84,7 @@ def update_proxies():
     proxies_is_updating = False
 
 if __name__ == '__main__':
-    threads = 140
+    threads = 80
     tested = 0
     working = 0
 
