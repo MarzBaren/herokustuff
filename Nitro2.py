@@ -31,7 +31,7 @@ def checker():
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
                     tested += 1
-                    #print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
+                    print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - " + str(proxy_queue.size()))
                     continue
                 
                 working += 1
@@ -84,7 +84,7 @@ def update_proxies():
     proxies_is_updating = False
 
 if __name__ == '__main__':
-    threads = 80
+    threads = 50
     tested = 0
     working = 0
 
