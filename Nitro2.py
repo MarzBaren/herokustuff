@@ -95,6 +95,7 @@ if __name__ == '__main__':
     tested = 0
     working = 0
     timer = time()
+    codes = 0
 
     proxies_is_updating = False
     proxy_list = []
