@@ -31,7 +31,7 @@ def checker():
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
                     tested += 1
-                    print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
+                    #print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
                     continue
                 
                 working += 1
@@ -55,6 +55,7 @@ def checker():
 
 def get_proxy():
     if proxy_queue.empty():
+        print(str(working) + " - " + str(tested))
         if len(proxy_list) < 500:
             update_proxies()
         else:
@@ -65,8 +66,6 @@ def get_proxy():
 
 def update_proxies():
     global proxies_is_updating, proxy_list
-    
-    print(str(working) + " - " + str(tested))
 
     if proxies_is_updating:
         return
