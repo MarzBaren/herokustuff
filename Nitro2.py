@@ -28,7 +28,7 @@ def checker():
                 elif req.__contains__('You are being rate limited.'):
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
-                    #print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
+                    print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
                     continue
                 
