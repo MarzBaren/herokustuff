@@ -28,6 +28,7 @@ def checker():
                 elif req.__contains__('You are being rate limited.'):
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
+                    print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
                     continue
                 
@@ -52,7 +53,7 @@ def checker():
 
 def get_proxy():
     if proxy_queue.empty():
-        print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()))
+        print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
         if len(proxy_list) < 500:
             update_proxies()
         else:
