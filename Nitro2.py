@@ -1,5 +1,5 @@
 from multiprocessing.dummy import Process
-from time import sleep
+from time import sleep, time
 from queue import Queue
 import requests
 import random
@@ -28,7 +28,7 @@ def checker():
                 elif req.__contains__('You are being rate limited.'):
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
-                    print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
+                    #print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
                     continue
                 
@@ -52,22 +52,33 @@ def checker():
 
 
 def get_proxy():
+    while proxies_is_updating:
+        sleep(1)
+
     if proxy_queue.empty():
-        print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
+        proxies_is_updating = True
+        timer2 = timer - time()
+        codes2 = tested - codes
+
+        print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - Codes/S: " + str(codes2/timer2) + " - Time Since Last Update: " + str(timer2) + "s")
+        
         if len(proxy_list) < 500:
             update_proxies()
         else:
             for proxy in proxy_list:
                 proxy_queue.put(proxy)
+                
+        proxies_is_updating = False
+        
+        global timer
+        timer = time()
+        global codes
+        codes = tested
 
     return proxy_queue.get()
 
 def update_proxies():
     global proxies_is_updating, proxy_list
-
-    if proxies_is_updating:
-        return
-    proxies_is_updating = True
 
     proxy_list = []
 
@@ -78,8 +89,6 @@ def update_proxies():
         proxy_queue.put(proxy.strip())
         proxy_list.append(proxy.strip())
     print("size = " + str(len(proxy_list)))
-
-    proxies_is_updating = False
 
 if __name__ == '__main__':
     threads = 300
