@@ -1,1 +1,1 @@
-web: python Nitro2.py
+worker: python Nitro2.py
