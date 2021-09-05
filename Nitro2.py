@@ -19,9 +19,6 @@ def checker():
                 req = ses.get(f"https://discordapp.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true", proxies={
                     'http': "socks4://" + proxy,
                     'https': "socks4://" + proxy}, headers=header).text
-                #print("1")
-
-                print(proxy_queue.qsize())
 
                 if req.__contains__('<p>The owner of this website (discordapp.com) has banned your IP address'):
                     try:
@@ -55,7 +52,7 @@ def checker():
 
 def get_proxy():
     if proxy_queue.empty():
-        print(str(working) + " - " + str(tested))
+        print(str(working) + " - " + str(tested) + " - " + str())
         if len(proxy_list) < 500:
             update_proxies()
         else:
@@ -84,7 +81,7 @@ def update_proxies():
     proxies_is_updating = False
 
 if __name__ == '__main__':
-    threads = 150
+    threads = 120
     tested = 0
     working = 0
 
