@@ -52,7 +52,7 @@ def checker():
 
 def get_proxy():
     if proxy_queue.empty():
-        print(str(working) + " - " + str(tested) + " - " + str())
+        print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()))
         if len(proxy_list) < 500:
             update_proxies()
         else:
