@@ -94,6 +94,7 @@ if __name__ == '__main__':
     threads = 300
     tested = 0
     working = 0
+    timer = time()
 
     proxies_is_updating = False
     proxy_list = []
