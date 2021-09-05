@@ -21,8 +21,7 @@ def checker():
                     'https': "socks4://" + proxy}, headers=header).text
                 #print("1")
 
-                print(req)
-                #print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - " + str(proxy_queue.size()))
+                print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
 
                 if req.__contains__('<p>The owner of this website (discordapp.com) has banned your IP address'):
                     try:
@@ -33,7 +32,6 @@ def checker():
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
                     tested += 1
-                    
                     continue
                 
                 working += 1
