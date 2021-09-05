@@ -25,10 +25,10 @@ def checker():
                         proxy_list.remove(proxy)
                     except: pass
                     break
-                elif req.__contains__('You are being rate limited.'):
+                elif req.__contains__('You are being rate limited.') or req.__contains__('<center><h1>502 Bad Gateway</h1></center>'):
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
-                    print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
+                    #print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
                     continue
                 
