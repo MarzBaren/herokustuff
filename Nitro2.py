@@ -31,6 +31,7 @@ def checker():
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
                     tested += 1
+                    print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
                     continue
                 
                 working += 1
