@@ -52,6 +52,7 @@ def checker():
 
 
 def get_proxy():
+    global timer
     while proxies_is_updating:
         sleep(1)
 
@@ -71,7 +72,7 @@ def get_proxy():
         proxies_is_updating = False
         
         global timer
-
+        timer = time()
         global codes
         codes = tested
 
