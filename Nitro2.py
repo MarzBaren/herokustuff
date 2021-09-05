@@ -84,7 +84,10 @@ def update_proxies():
 
     proxy_list = []
 
+
     proxies = requests.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=8000&country=all&simplified=true").text.split("\n")
+    proxies.extend(requests.get("https://proxysource.org/api/proxies/getWorkingProxies?apiToken=17580e4438910c287cef15dca10b7912a26&latencyMax=15000&latencyMin=0&outputMode=plaintext&uptimeMax=100&uptimeMin=30").text.split('\n'))
+    proxies.extend(requests.get("https://www.proxy-list.download/api/v1/get?type=socks4").text.split('\n'))
     random.shuffle(proxies)
 
     for proxy in proxies:
