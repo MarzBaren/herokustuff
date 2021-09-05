@@ -90,7 +90,7 @@ def update_proxies():
     print("size = " + str(len(proxy_list)))
 
 if __name__ == '__main__':
-    threads = 300
+    threads = 600
     
     tested = 0
     working = 0
