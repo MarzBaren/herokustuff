@@ -21,7 +21,7 @@ def checker():
                     'https': "socks4://" + proxy}, headers=header).text
                 #print("1")
 
-                print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)))
+                print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.size()))
 
                 if req.__contains__('<p>The owner of this website (discordapp.com) has banned your IP address'):
                     try:
