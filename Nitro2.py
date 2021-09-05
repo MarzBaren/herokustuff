@@ -52,7 +52,7 @@ def checker():
 
 
 def get_proxy():
-    global timer, codes
+    global timer, codes, proxies_is_updating
     while proxies_is_updating:
         sleep(1)
 
@@ -77,7 +77,7 @@ def get_proxy():
     return proxy_queue.get()
 
 def update_proxies():
-    global proxies_is_updating, proxy_list
+    global proxy_list
 
     proxy_list = []
 
