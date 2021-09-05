@@ -31,11 +31,14 @@ def checker():
                    # print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
                     continue
-                
+
+                print(code)
+                print(req)                
+
                 working += 1
                 data = {"content": req, "username": "Nitro Generator", "embeds": [
                     {
-                        "description": "code here",
+                        "description": code,
                         "title": code
                     }
                 ]}
@@ -81,7 +84,7 @@ def update_proxies():
 
     proxy_list = []
 
-    proxies = requests.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=4000&country=all&simplified=true").text.split("\n")
+    proxies = requests.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=8000&country=all&simplified=true").text.split("\n")
     random.shuffle(proxies)
 
     for proxy in proxies:
@@ -90,7 +93,7 @@ def update_proxies():
     print("size = " + str(len(proxy_list)))
 
 if __name__ == '__main__':
-    threads = 350
+    threads = 1000
     
     tested = 0
     working = 0
