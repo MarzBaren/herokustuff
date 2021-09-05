@@ -7,11 +7,11 @@ import random
 def checker():
     global proxy_list, tested, working
 
-    ses = requests.session()
-
     while True:
         proxy = get_proxy()
 
+        ses = requests.session()
+        
         for _ in range(5):
             try:
                 code = ''.join(random.choices("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", k=16))
@@ -81,7 +81,7 @@ def update_proxies():
     proxies_is_updating = False
 
 if __name__ == '__main__':
-    threads = 120
+    threads = 300
     tested = 0
     working = 0
 
