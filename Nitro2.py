@@ -5,7 +5,7 @@ import requests
 import random
 
 def checker():
-    global proxy_list
+    global proxy_list, tested, working
 
     ses = requests.session()
 
@@ -20,16 +20,20 @@ def checker():
                     'http': "socks4://" + proxy,
                     'https': "socks4://" + proxy}, headers=header).text
 
-                print(req)
+                #print(req)
 
                 if req.__contains__('<p>The owner of this website (discordapp.com) has banned your IP address'):
-                    proxy_list.remove(proxy)
+                    try:
+                        proxy_list.remove(proxy)
+                    except: pass
                     break
                 elif req.__contains__('You are being rate limited.'):
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
+                    tested += 1
                     continue
-
+                
+                working += 1
                 data = {"content": req, "username": "Nitro Generator", "embeds": [
                     {
                         "description": "code here",
@@ -42,9 +46,10 @@ def checker():
                     json=data)
                 continue
             except:
-                proxy_list.remove(proxy)
-                break
-
+                try:
+                    proxy_list.remove(proxy)
+                    break
+                except: pass
 
 
 def get_proxy():
@@ -59,6 +64,8 @@ def get_proxy():
 
 def update_proxies():
     global proxies_is_updating, proxy_list
+    
+    print(str(working) + " - " + str(tested))
 
     if proxies_is_updating:
         return
@@ -78,6 +85,8 @@ def update_proxies():
 
 if __name__ == '__main__':
     threads = 400
+    tested = 0
+    working = 0
 
     proxies_is_updating = False
     proxy_list = []
