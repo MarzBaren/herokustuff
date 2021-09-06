@@ -28,9 +28,11 @@ def checker():
                 elif req.__contains__('You are being rate limited.'):
                     break
                 elif req.__contains__('<center><h1>502 Bad Gateway</h1></center>'):
-                    break
+                    continue
                 elif req.__contains__('Internal Server Error'):
-                    break
+                    continue
+                elif req.__contains__('The web server reported a bad gateway error'):
+                    continue
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
                     #print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
@@ -70,7 +72,7 @@ def get_proxy():
 
         print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - Codes/S: " + str(int(codes2/timer2)) + " - Time Since Last Update: " + str(int(timer2)) + "s")
         
-        if len(proxy_list) < 1500:
+        if len(proxy_list) < 3000:
             update_proxies()
         else:
             for proxy in proxy_list:
