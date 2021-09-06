@@ -70,7 +70,7 @@ def get_proxy():
 
         print(str(working) + " - " + str(tested) + " - " + str(len(proxy_list)) + " - Codes/S: " + str(int(codes2/timer2)) + " - Time Since Last Update: " + str(int(timer2)) + "s")
         
-        if len(proxy_list) < 500:
+        if len(proxy_list) < 1500:
             update_proxies()
         else:
             for proxy in proxy_list:
