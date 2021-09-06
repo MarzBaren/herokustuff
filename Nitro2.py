@@ -18,14 +18,18 @@ def checker():
 
                 req = ses.get(f"https://discordapp.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true", proxies={
                     'http': "socks4://" + proxy,
-                    'https': "socks4://" + proxy}, headers=header).text
+                    'https': "socks4://" + proxy}, headers=header, timeout=10).text
 
                 if req.__contains__('<p>The owner of this website (discordapp.com) has banned your IP address'):
                     try:
                         proxy_list.remove(proxy)
                     except: pass
                     break
-                elif req.__contains__('You are being rate limited.') or req.__contains__('<center><h1>502 Bad Gateway</h1></center>'):
+                elif req.__contains__('You are being rate limited.'):
+                    break
+                elif req.__contains__('<center><h1>502 Bad Gateway</h1></center>'):
+                    break
+                elif req.__contains__('Internal Server Error'):
                     break
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
                     #print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
@@ -86,7 +90,7 @@ def update_proxies():
 
 
     proxies = requests.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=8000&country=all&simplified=true").text.split("\n")
-    proxies.extend(requests.get("https://proxysource.org/api/proxies/getWorkingProxies?apiToken=17580e4438910c287cef15dca10b7912a26&latencyMax=15000&latencyMin=0&outputMode=plaintext&uptimeMax=100&uptimeMin=30").text.split('\n'))
+    proxies.extend(requests.get("https://proxysource.org/api/proxies/getWorkingProxies?apiToken=17580e4438910c287cef15dca10b7912a26&latencyMax=7000&latencyMin=0&outputMode=plaintext&uptimeMax=100&uptimeMin=30").text.split('\n'))
     proxies.extend(requests.get("https://www.proxy-list.download/api/v1/get?type=socks4").text.split('\n'))
     random.shuffle(proxies)
 
