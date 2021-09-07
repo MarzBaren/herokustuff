@@ -34,7 +34,7 @@ def checker():
                 elif req.__contains__('The web server reported a bad gateway error'):
                     continue
                 elif req == '{"message": "Unknown Gift Code", "code": 10038}':
-                    #print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
+                    print(str(working) + " - " + str(tested) + " - " + str(proxy_queue.qsize()) + " - " + str(len(proxy_list)))
                     tested += 1
                     continue
 
