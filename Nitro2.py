@@ -54,10 +54,11 @@ def checker():
                     json=data)
                 continue
             except:
-                try:
-                    proxy_list.remove(proxy)
-                    break
-                except: pass
+                pass
+            try:
+                proxy_list.remove(proxy)
+                break
+            except: pass
 
 
 def get_proxy():
